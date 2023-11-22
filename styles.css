@@ -5,12 +5,14 @@
   font-family: sans-serif;
 }
 
-.container {
-  width: 100%;
-  min-height: 100vh;
+body {
   background-image: url(./images/pexels-pixabay-268533.jpg);
   background-position: center;
-  background-size: auto;
+  background-attachment: fixed;
+}
+
+.container {
+  width: 100%;
   color: white;
   padding-top: 50px;
   padding-left: 150px;
@@ -52,11 +54,50 @@
   margin-right: 5px;
 }
 
-.input-box {
-  width: 300px;
+.notes-container {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  gap: 20px;
+}
+
+.note {
+  width: 100%;
+  max-width: 350px;
   color: black;
-  background: rgb(221, 221, 221);
-  padding: 20px;
+  background: rgb(246, 246, 246);
+  padding: 10px;
+  border: none;
+  outline: none;
   border-radius: 10px;
   text-align: justify;
+  position: relative;
+}
+
+.note input {
+  width: 88%;
+  height: 35px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+
+.note .input-box {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+
+.delete-note-icon {
+  height: 35px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
 }
