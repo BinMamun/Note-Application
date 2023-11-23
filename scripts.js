@@ -1,25 +1,53 @@
 const createNew = document.querySelector(".js-create-new-button");
 const noteContainer = document.querySelector(".notes-container");
+const notes = document.querySelectorAll(".input-box");
+const deleteNote = document.querySelectorAll(".js-delete-icon");
 
 showNotes(); // shows the previous notes saved before.
 
-let newNote = localStorage.getItem("notes") || "";
-let id = 0;
 createNew.addEventListener("click", () => {
-  newNote += `
-  <div class="note" id="${id++}">
-    <input contenteditable="true" placeholder="Title">
-    <img title="Delete note" class="delete-note-icon" src="./images/delete.png" alt="">
-    <p contenteditable="true" class="input-box">
-    </p>        
-  </div>`;
-  noteContainer.innerHTML = newNote;
+
+  let div = document.createElement("div");
+  div.className = "note";
+
+  let titleBox = document.createElement("h5");
+  titleBox.setAttribute("contenteditable", "true");
+
+  let img = document.createElement("img");
+  img.src = "./images/delete.png";
+  img.className = "delete-note-icon";
+
+  let p = document.createElement("p");
+  p.className = "input-box";
+  p.setAttribute("contenteditable", "true");
+
+  div.appendChild(titleBox);
+  div.appendChild(img);
+  div.appendChild(p);
+  noteContainer.appendChild(div);
+  saveNotes();
+});
+
+
+noteContainer.addEventListener("click", (element) => {
+  if (element.target.tagName === "IMG") {
+    element.target.parentElement.remove();
+    saveNotes();
+  }
+  else if (element.target.tagName === "P") {
+    const notes = document.querySelectorAll(".input-box");
+    notes.forEach((note) => {
+      note.addEventListener("keyup", () => {
+        saveNotes();
+      })
+    })
+  }
   saveNotes();
 })
 
 
 function saveNotes() {
-  localStorage.setItem("notes", newNote);
+  localStorage.setItem("notes", noteContainer.innerHTML);
 }
 
 function showNotes() {
