@@ -1,6 +1,5 @@
 const createNew = document.querySelector(".js-create-new-button");
 const noteContainer = document.querySelector(".notes-container");
-const notes = document.querySelectorAll(".input-box");
 const deleteNote = document.querySelectorAll(".js-delete-icon");
 
 showNotes(); // shows the previous notes saved before.
