@@ -41,14 +41,13 @@ noteContainer.addEventListener("click", (element) => {
       })
     })
   }
-  saveNotes();
 })
 
 
 function saveNotes() {
   localStorage.setItem("notes", noteContainer.innerHTML);
-}
+}// save to local storage function
 
 function showNotes() {
   noteContainer.innerHTML = localStorage.getItem("notes");
-}
+} // show from local storage function
